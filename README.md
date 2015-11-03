@@ -77,3 +77,5 @@ $partial_add = partial('add');
 function and check the number of arguments. We return a function that receives the rest of the arguments and,
 when we match the required number, we evaluate the function with the passed parameters. When not, we recursively
 call `partial` with the current arguments and the same function, until we reach the edge-case to evaluate it.
+
+Made with :heart: by Haskell Camargo
