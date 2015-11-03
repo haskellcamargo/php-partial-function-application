@@ -64,7 +64,7 @@ your already existing functions.
 require_once 'partial.php';
 
 function add($x, $y, $z) {
-  return $x, $y, $z;
+  return $x + $y + $z;
 }
 
 $partial_add = partial('add');
