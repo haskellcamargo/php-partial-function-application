@@ -37,12 +37,10 @@ function partial($fn)
     $all_params = array_merge($start_parameters, $rest_parameters);
 
     if ($remaining_size <= 0) {
-      // Edge-case. Happens when our function reaches the expected number of
-      // arguments!
       return call_user_func_array($fn, $all_params);
     }
 
-    $partial_parameters = array_merge([$fn], $all_params);
-    return call_user_func_array('partial', $partial_parameters);
+    array_unshift($all_params, $fn);
+    return call_user_func_array('partial', $all_params);
   };
 }
