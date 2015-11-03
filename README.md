@@ -3,7 +3,7 @@
 #### Introduction
 
 I'm a functional programming shiite, and I love dealing with functions. In languages like LiveScript or Haskell, we can make
-a partial application of a funcional, this is, if a function doesn't receive the expected amount of parameters, we can
+a partial application of a function, this is, if a function doesn't receive the expected amount of parameters, we can
 return another function to receive them. This is very useful when dealing with pure functions and data handling. In LiveScript,
 we can do things such as:
 
