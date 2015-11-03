@@ -6,6 +6,6 @@ function add($x, $y, $z) {
   return $x + $y + $z;
 }
 
-$partial_add = partial('add', 20);
+$add_20 = partial('add', 20);
 
-echo $partial_add(30, 50);
+echo $add_20(30, 50);
