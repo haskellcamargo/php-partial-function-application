@@ -26,8 +26,7 @@
 
 function partial($fn)
 {
-  $start_parameters = func_get_args();
-  array_shift($start_parameters);
+  $start_parameters = array_slice(func_get_args(), 1);
   $required_size = sizeof((new \ReflectionFunction($fn))->getParameters());
 
   return function() use ($start_parameters, $required_size, $fn) {
