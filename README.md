@@ -58,6 +58,19 @@ echo $d, PHP_EOL;
 In all the results above we got 60 as output. You can also preinitialize a value while using `partial` and partialize
 your already existing functions.
 
+If, in functional programming, we can build more complex function using function composition, why can't we build more simpler
+functions by dividing them?
+
+We can, by example, build a function that doubles a list in a very easy way:
+
+```php
+$double_list = partial('array_map', function($x) {
+  return $x * 2;
+});
+
+var_dump($double_list([1, 2, 3, 4, 5])); // [2, 4, 6, 8, 10]
+```
+
 #### Basic usage
 
 ```php
