@@ -26,19 +26,24 @@
 
 function partial($fn)
 {
+  // Fetch the initial parameters on initialization
   $start_parameters = array_slice(func_get_args(), 1);
-  $required_size = sizeof((new \ReflectionFunction($fn))->getParameters());
+  $required_size = (new \ReflectionFunction($fn))->getNumberOfRequiredParameters();
 
+  // When we have enough arguments to evaluate the function, the edge-case.
+  if (sizeof($start_parameters) >= $required_size) {
+    return call_user_func_array($fn, $start_parameters);
+  }
+
+  // When we must partialize it
   return function() use ($start_parameters, $required_size, $fn) {
     $rest_parameters = func_get_args();
     $remaining_size = $required_size - (count($rest_parameters) + count($start_parameters));
 
+    // Join the current parameters with the newly received parameters
     $all_params = array_merge($start_parameters, $rest_parameters);
 
-    if ($remaining_size <= 0) {
-      return call_user_func_array($fn, $all_params);
-    }
-
+    // Append the function as the first item and call partialization again
     array_unshift($all_params, $fn);
     return call_user_func_array('partial', $all_params);
   };
